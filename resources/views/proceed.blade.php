@@ -10,15 +10,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="app">
-        @include('flash-message')
-        @yield('content')
-    </div>
+  
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card mt-5">
                     <div class="card-body">
+                        @if ($message = Session::get('successMsg'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @endif
                         <h3 class="text-center">Biodata Display</h3>
                         <div class="text-center">
                             <img src="{{ '/' . $imageName }}" alt="Image" width="200" height="auto">

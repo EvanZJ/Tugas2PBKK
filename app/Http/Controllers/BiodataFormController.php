@@ -28,6 +28,9 @@ class BiodataFormController extends Controller
         ],$messagesError); 
         $imageName = $request->picture->getClientOriginalName();
         $request->picture->move(public_path(), $imageName);
-        return view('proceed',['data' => $request, 'imageName' => $imageName, 'message' => 'success']);
+        $request->session()->flash('successMsg','Saved succesfully!'); 
+        return view('proceed')->with('data', $request)
+                              ->with('successMsg', 'Data has been successfully submitted!')
+                              ->with('imageName', $imageName);
     }
 }

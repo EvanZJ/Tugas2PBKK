@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BiodataFormController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 
 Route::get('/input',[BiodataFormController::class, 'input']);
 Route::post('/proceed', [BiodataFormController::class, 'proceed']);
+
+Route::get("/article", [ArticleController::class, 'index']);
+Route::get("/article/{article:slug}", [ArticleController::class, 'content']);
+Route::get("/categories", [ArticleController::class, 'categories']);
+Route::get("/categories/{category:slug}", [ArticleController::class, 'category']);
+
